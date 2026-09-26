@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Level 8</title>
+  <link rel="stylesheet" href="../../css/chap1css/chapter1.css">
+  <link rel="icon" type="image/png" href="../../image/logo.png">
+</head>
+<body>
+  <canvas id="webgl-canvas"></canvas>
+  <a href="../games.html" class="back-button">
+    <img src="../../image/arrow.png" alt="Quay lại" class="back-icon">
+  </a>
+  <!-- Hướng dẫn chơi và bắt đầu -->
+   <div id="game-overlay" class="overlay">
+    <div class="modal-card">
+      <h2 class="game-title">Màn 8: Cuộc diễu hành của các hành tinh</h2>
+      <div class="instructions">
+        <p>🎯<strong>Nhiệm vụ:</strong> Cùng quan sát hiện tượng rất hiếm có trong vũ trụ!</p>
+        <ul>
+          <li>Dùng chuột xoay xung quanh không gian vũ trụ bao la</li>
+          <li>Thứ tự nối đúng sẽ giúp bạn chiến thắng</li>
+          <li>Sử dụng gợi ý để tìm vị trí chính xác và hoàn thành!</li>
+          <li>(Xoay màn hình điện thoại để có trải nghiệm tốt nhất!)</li>
+        </ul>
+      </div>
+
+      <!-- Thanh Loading -->
+       <div id="loading-container" class="loading-box">
+        <div class="progress-bar">
+          <div id="progress-fill" class="progress-fill"></div>
+        </div>
+        <p id="loading-text">Căn chỉnh thước ngắm....0%</p>
+       </div>
+
+       <!-- Nút bắt đầu -->
+        <button id="start-button" class="start-button hidden">BẮT ĐẦU KHÁM PHÁ</button>
+    </div>
+   </div>
+
+   <!-- Cụm tính năng Gợi ý / Manh mối -->
+  <div id="hint-container">
+  <!-- Nút bấm góc dưới bên phải -->
+  <button id="hint-toggle-button" class="hint-button" title="Xem gợi ý">
+    <svg class="scroll-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+      <polyline points="14 2 14 8 20 8"></polyline>
+      <line x1="16" y1="13" x2="8" y2="13"></line>
+      <line x1="16" y1="17" x2="8" y2="17"></line>
+      <polyline points="10 9 9 9 8 9"></polyline>
+    </svg>
+  </button>
+
+  <!-- Popup Tờ giấy manh mối -->
+  <div id="hint-modal" class="hint-modal hidden">
+    <!-- Overlay mờ phía sau tờ giấy -->
+    <div id="hint-overlay-badge" class="hint-overlay-badge"></div>
+
+    <!-- Khung tờ giấy cũ -->
+    <div class="paper-card">
+      <!-- Nút đóng góc tờ giấy -->
+      <button id="hint-close-button" class="paper-close-button">&times;</button>
+      
+      <!-- Chỗ dán ảnh nền tờ giấy  -->
+      <img src="../../image/Old-Paper.webp" alt="Tờ giấy gợi ý" class="paper-badge-img">
+
+      <!-- Nội dung văn bản nằm đè trên tờ giấy -->
+      <div class="paper-content">
+        <h3 class="paper-title">📜 Manh Mối Bầu Trời</h3>
+        <p class="paper-poem">
+          Nhiệm vụ lần này khó không phải vì sự phức tạp của những đường nối, mà là lần này điều kiện quan sát khá tệ, có quá nhiều sao khiến tôi khó mà nhận ra các hành tinh...tôi chỉ có thể biết được rằng có một đường thẳng kì lạ được nối bởi 5 "ngôi sao", cùng với 2 "ngôi sao" thấp nhất bầu trời tại thời điểm này...
+        </p>
+        <div class="paper-tip">
+          💡 <strong>Gợi ý:</strong> Tứ phía là sao, thật khó để nhận ra, nhưng cứ quay lại thử đi, bạn sẽ thâyS!
+        </div>
+      </div>
+    </div>
+   </div>
+  </div>
+<!-- Thông báo khi nối sai -->
+  <div id="toast-message" class="toast-message hidden">
+  ⚠️ Chưa được rồi! Hãy mở tờ giấy manh mối 📜 ở góc dưới bên phải để đọc kỹ gợi ý nhé.
+  </div>
+
+<!-- Overlay chiến thắng -->
+  <div id="win-overlay" class="win-overlay hidden">
+    <div class="win-card">
+    
+    <!-- Cột trái: Hình ảnh chòm sao -->
+    <div class="win-image-container">
+      <img src="../../image/Planet-Parade.webp" alt="Hiện tượng cuộc diễu hành của các hành tinh" class="win-constellation-img">
+      <span class="image-caption">Hiện tượng cuộc diễu hành của các hành tinh</span>
+    </div>
+
+    <!-- Cột phải: Thông tin & Nút tiếp tục -->
+    <div class="win-content">
+      <div class="win-header">
+        <span class="win-badge">🎉 CHIẾN THẮNG</span>
+        <h2 class="win-title">GIẢI MÃ THÀNH CÔNG!</h2>
+      </div>
+
+      <div class="win-info-body">
+        <p class="win-intro">
+          Chúng ta vừa giải mã và chứng kiến được những hành tinh góp mặt trong hiện tượng <strong>Cuộc diễu hành của các hành tinh (Planet Parade)</strong> — một hiện tượng cực hiếm trên bầu trời!
+        </p>
+
+        <div class="fun-fact-box">
+          <h4>✨ Góc "Bật mí" siêu thú vị:</h4>
+          <ul>
+            <li><strong>Sao Thủy và Sao Kim:</strong> 2 hành tinh này luôn sẽ là kẻ gác cổng ở chân trời mỗi khi có hiện tượng này!💂</li>
+            <li><strong>Sự kiện nhiều ngày:</strong> Hiện tượng này có thể kéo dài từ vài ngày đến vài tuần, nên bạn không cần phải sợ nếu bỏ lỡ nó vào 1 ngày nào đó nhé!</li>
+            <li><strong>Hiệu ứng góc nhìn:</strong> Trong vũ trụ, các hành tinh không thật sự tạo thành một đường thẳng, mà do góc nhìn của chúng ta ở Trái Đất đã tạo ra nó!</li>
+            <li><strong>Thời điểm đẹp nhất để xem:</strong> Lịch quan sát thường thay đổi nhiều và khó đoán trước, hãy chủ động cập nhật nó trên các trang báo uy tín. Thời điểm gần nhất có sự xuất hiện của 6 hành tinh là Noel năm 2027.</li>
+          </ul>
+        </div>
+      </div>
+
+      <a href="../games.html" class="win-next-button">
+        <span>TIẾP TỤC HÀNH TRÌNH</span>
+        <svg class="button-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</div>
+   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+</body>
+<script src="../../js/chapter1/chap1.js"></script>
+<script src="../../js/chapter1/level8.js"></script>
+</html>

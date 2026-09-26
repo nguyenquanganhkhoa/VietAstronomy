@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Level 5</title>
+  <link rel="stylesheet" href="../../css/chap1css/chapter1.css">
+  <link rel="icon" type="image/png" href="../../image/logo.png">
+</head>
+<body>
+  <canvas id="webgl-canvas"></canvas>
+  <a href="../games.html" class="back-button">
+    <img src="../../image/arrow.png" alt="Quay lại" class="back-icon">
+  </a>
+  <!-- Hướng dẫn chơi và bắt đầu -->
+   <div id="game-overlay" class="overlay">
+    <div class="modal-card">
+      <h2 class="game-title">Màn 5: Đại Hùng Vương</h2>
+      <div class="instructions">
+        <p>🎯<strong>Nhiệm vụ:</strong> Quan sát các ngôi sao sáng trên bầu trời, xác định phương hướng để tìm ra chòm sao Đại Hùng (Ursa Major)</p>
+        <ul>
+          <li>Dùng chuột xoay xung quanh không gian vũ trụ bao la</li>
+          <li>Thứ tự nối đúng sẽ kích hoạt chòm sao</li>
+          <li>Sử dụng gợi ý để tìm vị trí chính xác và hoàn thành!</li>
+          <li>(Xoay màn hình điện thoại để có trải nghiệm tốt nhất!)</li>
+        </ul>
+      </div>
+
+      <!-- Thanh Loading -->
+       <div id="loading-container" class="loading-box">
+        <div class="progress-bar">
+          <div id="progress-fill" class="progress-fill"></div>
+        </div>
+        <p id="loading-text">Chuẩn bị la bàn....0%</p>
+       </div>
+
+       <!-- Nút bắt đầu -->
+        <button id="start-button" class="start-button hidden">BẮT ĐẦU KHÁM PHÁ</button>
+    </div>
+   </div>
+
+   <!-- Cụm tính năng Gợi ý / Manh mối -->
+  <div id="hint-container">
+  <!-- Nút bấm góc dưới bên phải -->
+  <button id="hint-toggle-button" class="hint-button" title="Xem gợi ý">
+    <svg class="scroll-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+      <polyline points="14 2 14 8 20 8"></polyline>
+      <line x1="16" y1="13" x2="8" y2="13"></line>
+      <line x1="16" y1="17" x2="8" y2="17"></line>
+      <polyline points="10 9 9 9 8 9"></polyline>
+    </svg>
+  </button>
+
+  <!-- Popup Tờ giấy manh mối -->
+  <div id="hint-modal" class="hint-modal hidden">
+    <!-- Overlay mờ phía sau tờ giấy -->
+    <div id="hint-overlay-badge" class="hint-overlay-badge"></div>
+
+    <!-- Khung tờ giấy cũ -->
+    <div class="paper-card">
+      <!-- Nút đóng góc tờ giấy -->
+      <button id="hint-close-button" class="paper-close-button">&times;</button>
+      
+      <!-- Chỗ dán ảnh nền tờ giấy -->
+      <img src="../../image/Old-Paper.webp" alt="Tờ giấy gợi ý" class="paper-badge-img">
+
+      <!-- Nội dung văn bản nằm đè trên tờ giấy -->
+      <div class="paper-content">
+        <h3 class="paper-title">📜 Manh Mối Bầu Trời</h3>
+        <p class="paper-poem">
+          Đây có thể là chòm sao khá dễ nhận biết đấy. Chỉ là nối lần lượt từng sao lại thôi mà đúng không?
+        </p>
+        <div class="paper-tip">
+          💡 <strong>Gợi ý:</strong> Bên trái của bạn kìa! Bắt đầu từ ngôi sao thấp nhất nhé😉
+        </div>
+      </div>
+    </div>
+   </div>
+  </div>
+<!-- Thông báo khi nối sai -->
+  <div id="toast-message" class="toast-message hidden">
+  ⚠️ Nối chưa chính xác! Hãy mở tờ giấy manh mối 📜 ở góc dưới bên phải để đọc kỹ gợi ý nhé.
+  </div>
+
+<!-- Overlay chiến thắng -->
+  <div id="win-overlay" class="win-overlay hidden">
+    <div class="win-card">
+    
+    <!-- Cột trái: Hình ảnh chòm sao -->
+    <div class="win-image-container">
+      <img src="../../image/Ursa_Major.webp" alt="Chòm sao Đại Hùng (Ursa Major)" class="win-constellation-img">
+      <span class="image-caption">Chòm sao Đại Hùng (Ursa Major)</span>
+    </div>
+
+    <!-- Cột phải: Thông tin & Nút tiếp tục -->
+    <div class="win-content">
+      <div class="win-header">
+        <span class="win-badge">🎉 CHIẾN THẮNG</span>
+        <h2 class="win-title">GIẢI MÃ THÀNH CÔNG!</h2>
+      </div>
+
+      <div class="win-info-body">
+        <p class="win-intro">
+          Chúc mừng nhà thiên văn học tập sự! Bạn đã thắp sáng thành công <strong>Đại Hùng (Ursa Major)</strong> — một chòm sao dễ nhận biết, nổi bật với 7 ngôi sao Bắc Đẩu như trong màn chơi!
+        </p>
+
+        <div class="fun-fact-box">
+          <h4>✨ Góc "Bật mí" siêu thú vị:</h4>
+          <ul>
+            <li><strong>Hình dạng thật sự:</strong> Chòm sao Đại Hùng có kích thước rất đồ sộ, nhưng nổi bật nhất là hệ thống 7 sao Bắc Đẩu tạo thành cái "gáo" trời!🪣⭐</li>
+            <li><strong>Họ hàng cùng huyết thống:</strong> Đa số ngôi sao trong 7 sao Bắc Đẩu đều được sinh ra từ một nơi cách đây hàng trăm triệu năm, và vẫn đang di chuyển cùng một hướng cho đến tận ngày nay!🏃</li>
+            <li><strong>Cặp đôi của vũ trụ:</strong> Nằm trong phạm vi của Đại Hùng là một cặp đôi rất đặc biệt, kẻ như điếu xì gà, người lại đẹp một cách mỹ miều. Đó là Messier 82 và Messier 81!🚬🌌</li>
+            <li><strong>Thời gian đẹp nhất để xem:</strong> Thời điểm lí tưởng nhất để quan sát là vào tháng 3 đến tháng 6!</li>
+          </ul>
+        </div>
+      </div>
+
+      <a href="../games.html" class="win-next-button">
+        <span>TIẾP TỤC HÀNH TRÌNH</span>
+        <svg class="button-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</div>
+   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+</body>
+<script src="../../js/chapter1/chap1.js"></script>
+<script src="../../js/chapter1/level5.js"></script>
+</html>

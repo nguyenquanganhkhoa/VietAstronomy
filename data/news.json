@@ -1,0 +1,26 @@
+[
+  {
+    "id": "geminids-2026",
+    "badge": "☄️ Mưa Sao Băng",
+    "banner": "/image/Geminids.webp",
+    "title": "Mưa sao băng Geminids",
+    "desc": "Vị vua của các cơn mưa sao băng sẽ trình làng vào cuối năm! Chuẩn bị tinh thần đón hàng trăm vệt sáng mỗi giờ.",
+    "link": "news/Geminids.html"
+  },
+  {
+    "id": "supermoon-2027",
+    "badge": "🌕 Siêu Trăng",
+    "banner": "https://placehold.co/600x400/1a1a2e/ffffff?text=Super+Moon",
+    "title": "Siêu Trăng Hồng xuất hiện năm 2027",
+    "desc": "Hiện tượng Mặt Trăng đi qua điểm gần Trái Đất nhất trên quỹ đạo, tạo nên khung cảnh rực rỡ trên bầu trời đêm.",
+    "link": "#"
+  },
+  {
+    "id": "asteroid-2026",
+    "badge": "🚀 NASA Data",
+    "banner": "https://placehold.co/600x400/0f172a/38bdf8?text=NASA+Asteroid",
+    "title": "Tiểu hành tinh ghé thăm Trái Đất an toàn",
+    "desc": "Theo dữ liệu từ NASA NeoWs, tiểu hành tinh di chuyển với vận tốc ấn tượng sẽ bay qua ở khoảng cách an toàn.",
+    "link": "#"
+  }
+]

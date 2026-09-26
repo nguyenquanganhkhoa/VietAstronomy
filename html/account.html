@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/account.css">
+    <title>VietAstronomy</title>
+    <link rel="icon" type="image/png" href="../image/logo.png">
+</head>
+<body>
+    <div id="navbar-container"></div>
+    <div class="account-container">
+        <div class="account-header card">
+            <div class="avatar-wrapper">
+                <img src="../image/Astronaut.webp" alt="Avatar" class="avatar-img">
+                <button class="button-edit-avatar">📷</button>    
+            </div>
+            <div class="user-info">
+                <h2 class="user-name">Tô Gia Huy</h2>
+                <span class="user-badge">🚀 Tân binh không gian</span>
+            </div>
+        </div>
+
+        <div class="account-tabs">
+            <button class="tab-button active" data-target="stats">Thành tích</button>
+            <button class="tab-button" data-target="saved">Bài viết đã lưu</button>
+            <button class="tab-button" data-target="settings">Cài đặt</button>
+        </div>
+
+        <div class="tab-content">
+            <div id="stats" class="tab-pane active">
+                <h3>Thành tích của phi hành gia</h3>
+            </div>
+
+            <div id="saved" class="tab-pane" style="display:none;">
+                <h3>Bài viết đã lưu</h3>
+            </div>
+            <div id="settings" class="tab-pane" style="display:none;">
+                <h3>Cài đặt tài khoản</h3>
+                <input type="text" placeholder="Tên hiển thị mới..." />
+                <input type="bio" placeholder="TIểu sử mới..." />
+                <button class="button-save">Lưu thay đổi</button>
+            </div>
+            
+        </div>
+    </div>
+    <div id="footer-container"></div>
+<script src="../js/main.js"></script>
+<script src="../js/account.js"></script>
+</body>
+</html>
