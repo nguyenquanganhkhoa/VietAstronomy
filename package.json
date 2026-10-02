@@ -12,6 +12,8 @@
     "vite": "^8.2.0"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.117.2",
+    "@vercel/speed-insights": "^2.0.0",
     "three": "^0.185.1"
   }
 }

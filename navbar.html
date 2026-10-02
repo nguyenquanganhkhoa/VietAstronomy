@@ -19,12 +19,29 @@
             </button>
             <ul class="navbar-menu">
                 <li><a href="/index.html" class="active">Trang chủ</a></li>
-                <li><a href="/html/games.html">Trò chơi</a></li>
+                <li><a href="/html/games.html" class="require-auth">Trò chơi</a></li>
                 <li><a href="/html/news.html">Tin tức</a></li>
                 <li><a href="/html/about.html">Đội ngũ</a></li>
                 <li><a href="/html/contact.html">Liên hệ</a></li>
-                <li><a href="/html/account.html">Cosmoser</a></li>
-            </ul>
+
+            <!-- Dành cho User đã đăng nhập -->
+            <li id="nav-item-account" class="hidden">
+            <a href="/html/account.html">Cosmoser</a>
+            </li>
+
+            <!-- Dành cho Khách (Guest) -->
+            <li id="nav-item-login">
+                <a href="/html/login.html">Đăng Nhập</a>
+            </li>
+
+            <!-- Nút Đăng xuất (Hiện khi đã đăng nhập) -->
+            <li id="nav-item-logout" class="hidden">
+                <a href="#">Đăng Xuất</a>
+            </li>
+
+
+</ul>
+</ul>
         </div>    
     </nav>
 </body>

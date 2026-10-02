@@ -13,13 +13,22 @@
     <!--Navbar -->
     <nav id="navbar-container"></nav>
     <main>
+        <!-- KHU VỰC 1: Dành cho Khách (Chưa đăng nhập) -->
+        <section id="auth-section">
+            <h2>Chào mừng đến với VietAstronomy</h2>
+            <p>Vui lòng đăng nhập hoặc đăng ký để tiếp tục...</p>
+        <!-- Ở Giai đoạn 2 bạn sẽ đặt Form Đăng ký/Đăng nhập vào đây -->
+        </section>
+  
+  <!-- Các tính năng web, kính thiên văn 3D, game Nối sao... ở đây -->
+</section>
         <!--Hero Section Trang Chủ-->
         <section class="home-hero-container">
             <img src="image/Hero-Section.webp" alt="homepage-logo" class="home-logo">
             <div class="home-hero-text">
                 <h1>Trang web học thiên văn dành cho lứa tuổi học sinh</h1>
                 <p>Hỗ trợ người trẻ tiếp cận những kiến thức khô khan nhất qua những cách thú vị nhất!</p>
-                <a href="/html/games.html" class="home-button-hero">Thử ngay!</a>
+                <a href="/html/games.html" class="home-button-hero require-auth">Thử ngay!</a>
             </div>
         </section>
         <!--Sự kiện-->
@@ -46,41 +55,9 @@
                             <h2 class="home-team-name">Nguyễn Quang Anh Khoa</h2>
                             <p class="home-team-description">Chôm chôm mạnh nhất lịch sử. Mua cho nhà phát triển 1 ly Cappuchino với...</p>
 
-                            <a href="/html/about.html" class="home-team-button">Tìm hiểu thêm</a>
+                            <a href="/html/about.html" class="home-team-button" require-auth>Tìm hiểu thêm</a>
                         </div>
                     </div>  
-                    <div class="home-team-card swiper-slide">
-                        <div class="home-team-image-content">
-                            <span class="home-team-overlay"></span>
-
-                            <div class="home-team-image">
-                                <img src="https://placehold.co/300x300/1a1a2e/ffffff?text=Lead+Dev" alt="Ảnh thành viên" class="home-team-img">
-                            </div>
-                        </div>
-
-                        <div class="home-team-content">
-                            <h2 class="home-team-name">Huỳnh Khánh My</h2>
-                            <p class="home-team-description">Ủng hộ anh guộc 1 ly Cao Hồng!</p>
-
-                            <a href="/html/about.html" class="home-team-button">Tìm hiểu thêm</a>
-                        </div>
-                    </div>
-                    <div class="home-team-card swiper-slide">
-                        <div class="home-team-image-content">
-                            <span class="home-team-overlay"></span>
-
-                            <div class="home-team-image">
-                                <img src="https://placehold.co/300x300/1a1a2e/ffffff?text=Lead+Dev" alt="Ảnh thành viên" class="home-team-img">
-                            </div>
-                        </div>
-
-                        <div class="home-team-content">
-                            <h2 class="home-team-name">Nguyễn Phương Tâm Nhu</h2>
-                            <p class="home-team-description">Đây là một trong những thành viên đã truyền cảm hứng rất lớn cho tôi trong việc phát triển dự án này. Cùng với Băng, Nhu đã đóng góp những gợi ý và quan điểm quan trọng về trang web của tôi, giúp tôi sửa đổi và hoàn thiện hơn từng ngày. Đô 500 từng nói: Tôi từng chờ đợi Tâm Nhu trượt Lê Quý Đôn suốt 1 năm chỉ để đưa một xuất tuyển thẳng cho cô ấy ở nước Mỹ. Quá hoàn hảo. Xứng đáng là người bạn của năm. (Tôi bị điều khiển...😞)</p>
-
-                            <a href="/html/about.html" class="home-team-button">Tìm hiểu thêm</a>
-                        </div>
-                    </div>
                     <div class="home-team-card swiper-slide">
                         <div class="home-team-image-content">
                             <span class="home-team-overlay"></span>
@@ -94,7 +71,7 @@
                             <h2 class="home-team-name">Nguyễn Phạm Băng Băng</h2>
                             <p class="home-team-description">Chiếc lốp mạnh nhất lịch sử, bị anh bỏ và trở thành thủ khoa. Điên rồ. And now, walking out of the center stage of honor. This girl is an English and Literature specialist! Destroying the entrance exam with breathtaking essays and flawless English skills! Standing tall with a stellar record of years of hard work, weighing in at hundreds of essays and thousands of English vocabularies and grammars. Representing her former school, Xuyen Moc Secondary School, ready to conquer the next 3-year journey in Xuyen Moc High School. Presenting the undisputed, champion of the NEW ERA! THE ONE, THE ONLY, THE VALEDICTORIAN, THE CANDY, NGUYEN, PHAM, BANGGGGGGGGGG...BANG!</p>
 
-                            <a href="/html/about.html" class="home-team-button">Tìm hiểu thêm</a>
+                            <a href="/html/about.html" class="home-team-button require-auth">Tìm hiểu thêm</a>
                         </div>
                     </div>           
                 </div>
@@ -109,5 +86,6 @@
 <script src="/js/swiper-bundle.min.js"></script>
 <script src="/js/main.js"></script>
 <script src="/js/index.js"></script>
+<script type="module" src="/js/auth.js"></script>
 </body>
 </html>

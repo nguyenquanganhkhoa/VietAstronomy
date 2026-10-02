@@ -15,7 +15,7 @@ const sfxError = new Audio('../../music/error-notification.ogg');
 const sfxVictory = new Audio('../../music/victory-bell-success-fanfare.ogg');
 
 const starsData = [
-    // --- Các sao chính thuộc chòm Lạp Hộ (Đã đẩy cao Y: ~22 -> 35, xa Z: -50) ---
+    // --- Các sao chính thuộc chòm Lạp Hộ ---
     { id: 'betelgeuse', name: 'Betelgeuse', pos: [-15, 80, -90], color: 0xff4500, size: 0.9 }, 
     { id: 'bellatrix',  name: 'Bellatrix',  pos: [ 10, 70, -90], color: 0x9bb0ff, size: 0.75 }, 
     { id: 'alnitak',    name: 'Alnitak',    pos: [-9, 39, -90], color: 0xaabfff, size: 0.65 },  
@@ -24,7 +24,7 @@ const starsData = [
     { id: 'saiph',      name: 'Saiph',      pos: [-12, 16, -90], color: 0x9bb0ff, size: 0.75 },
     { id: 'rigel',      name: 'Rigel',      pos: [ 14, 19, -90], color: 0x87cefa, size: 1.0 }, 
 
-    // --- Sao bẫy (Cũng nâng cao tương ứng) ---
+    // --- Sao bẫy ---
     { id: 'fake_1',     name: 'Sao bẫy 1', pos: [-20, 28, -90], color: 0xffffff, size: 0.7 },
     { id: 'fake_2',     name: 'Sao bẫy 2', pos: [ 9, 26, -90], color: 0xffffff, size: 0.65 },
     { id: 'fake_3',     name: 'Sao bẫy 3', pos: [ 20, 36, -90], color: 0xffffff, size: 0.75 }

@@ -35,7 +35,7 @@ function renderEvents() {
         <span class="card-description">${event.description}</span>
         <p class="event-date">${event.date}</p>
         <h3 class="event-title">${event.title}</h3>
-        <a href="${event.link}" class="event-button">Khám phá thêm</a>
+        <a href="${event.link}" class="event-button require-auth">Khám phá thêm</a>
       </div>
     </article>
   `).join('');
