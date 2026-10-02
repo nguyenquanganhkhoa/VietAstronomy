@@ -1,7 +1,5 @@
 # VietAstronomy
 Tên dự án: VietAstronomy
-Lĩnh vực: Phần mềm hệ thống
-(Kế thừa và phát triển từ dự án VietAstronomy đã đạt giải 3 cấp TP kì thi KHKT)
 Mục đích tạo ra dự án: Trong bối cảnh du hành không gian đang trở nên phổ biến, cùng với sự phát triển của công nghệ, những vấn đề phát sinh với dân số và đất đai trên Trái Đất, thúc đẩy con người không ngừng khám phá không gian để tìm những vùng đất mới, những nguồn nguyên liệu mới cho cuộc sống của con người. Không nằm ngoài cuộc chơi của nhân loại, Việt Nam cũng đang từng bước làm chủ những công nghệ lõi của vệ tinh, xây dựng những cộng đồng đam mê thiên văn và thích quan sát bầu trời. Tuy vậy, cơ hội tiếp cận các kiến thức cơ bản của các bạn nhỏ, đặc biệt là lứa tuổi cấp 1, cấp 2 còn chưa cao, cách tiếp cận vẫn còn mang nặng truyền thống học thuật. Website này được tạo ra để giải quyết những vấn đề đó, các bạn sẽ được học thiên văn bằng cách trực tiếp trải nghiệm công việc của những nghề nghiệp liên quan đến vũ trụ một cách hoàn toàn miễn phí, đồng thời cũng sẽ xây dựng trí tò mò, niềm đam mê bầu trời thông qua các sự kiện ngắm mưa sao băng, những thí nghiệm đơn giản có thể thực hiện tại nhà, và những trò chơi mô phỏng đầy cuốn hút và thú vị. Để rồi sau này, chúng ta sẽ sở hữu cả một thiên hà gồm những người sẵn sàng tiến đến vì sao! VietAstronomy đang làm điều đó, từ những bước nhỏ nhất....
 
-<Đội ngũ phát triển VietAstronomy>
+<Nguyễn Quang Anh Khoa>
