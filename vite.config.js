@@ -15,4 +15,8 @@ export default defineConfig({
       },
     },
   },
+  // Đảm bảo Vite giữ nguyên cú pháp ES module cho client
+  build: {
+    target: 'esnext'
+  }
 });
