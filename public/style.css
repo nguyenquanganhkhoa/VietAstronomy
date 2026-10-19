@@ -151,6 +151,11 @@ body {
         padding: 3px 15px;
     }
 }
+
+.hidden {
+    display: none;
+}
+
 /* Hero Section Trang Chủ*/
 .home-hero-container {
     height: 600px;

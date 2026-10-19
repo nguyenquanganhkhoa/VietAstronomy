@@ -17,7 +17,7 @@ async function renderNews() {
           <span class="news-badge">${article.badge}</span>
           <h3>${article.title}</h3>
           <p>${article.desc}</p>
-          <a href="${article.link}" class="read-button">
+          <a href="${article.link}" class="read-button require-auth">
           Đọc ngay 🚀
           </a>
         </div>

@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .then(data => {
         navbarContainer.innerHTML = data;
+        document.dispatchEvent(new Event('navbar:loaded'));
         
         const currentPath = window.location.pathname;
         const navLinks = navbarContainer.querySelectorAll('.navbar-menu li a');

@@ -1,14 +1,4 @@
-// ========================================================
-//  CẤU HÌNH DỮ LIỆU CÁC NGÔI SAO & LOGIC NỐI CHÒM SAO 
-// ========================================================
-
-// --- 💡 HƯỚNG DẪN TỰ SẮP XẾP VÀ THAY ĐỔI TỌA ĐỘ VỚI CÁC MÀN KHÁC: ---
-// 1. Tọa độ x, y, z xác định vị trí sao trong không gian 3D.
-// 2. Với hướng nhìn mặc định camera (target = [0, 5, -10]):
-//    - x: Trái (-) / Phải (+)
-//    - y: Dưới (-) / Trên (+)
-//    - z: Giữ ở khoảng -20 đến -30 để sao nằm phía trước tầm nhìn người chơi.
-
+import '../../../src/supabaseClient.js';
 // Khởi tạo các đối tượng âm thanh SFX
 const sfxCorrect = new Audio('../../music/clear-bell-chime.ogg');
 const sfxError = new Audio('../../music/error-notification.ogg');
@@ -270,6 +260,8 @@ function triggerConstellationGlow() {
         level1BgMusic.volume = 0.3;
     }
 
+    saveProgressToSupabase(10);
+
     // 5. Phát âm thanh chiến thắng
     playSFX('victory'); // <--- Phát âm thanh chiến thắng khi hoàn thành game
 
@@ -354,5 +346,54 @@ function playSFX(type) {
         sound.play().catch(error => {
             console.warn(`Chưa thể phát SFX (${type}):`, error);
         });
+    }
+}
+
+async function saveProgressToSupabase(nextLevel) {
+    console.log("1. Đang gọi hàm lưu tiến trình lên Supabase...");
+
+    if (typeof supabase === 'undefined') {
+        console.error("LỖI: Biến supabase chưa được định nghĩa (undefined) ở file này!");
+        return;
+    }
+
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    if (authError || !user) {
+        console.error("LỖI: Người dùng chưa đăng nhập hoặc chưa có phiên làm việc (Session), chi tiết:", authError);
+        return;
+    }
+
+    console.log("2. Xác thực thành công! User ID:", user.id);
+
+    // Lấy tiến trình hiện tại của user
+    const { data, error: selectError } = await supabase
+        .from('user_progress')
+        .select('unlocked_level')
+        .eq('user_id', user.id)
+        .single();
+
+    if (selectError && selectError.code !== 'PGRST116') {
+        console.error("Lỗi khi đọc bảng user_progress:", selectError);
+    }
+
+    const currentUnlocked = data ? data.unlocked_level : 1;
+    console.log("3. Mức màn chơi đã mở khóa hiện tại trên DB:", currentUnlocked);
+
+    if (nextLevel > currentUnlocked) {
+        const { error: upsertError } = await supabase
+            .from('user_progress')
+            .upsert({ 
+                user_id: user.id, 
+                unlocked_level: nextLevel, 
+                updated_at: new Date() 
+            });
+
+        if (upsertError) {
+            console.error("4. Lỗi khi lưu (Upsert) lên Supabase:", upsertError);
+        } else {
+            console.log(`4. THÀNH CÔNG: Đã cập nhật mở khóa đến màn ${nextLevel} trên Supabase!`);
+        }
+    } else {
+        console.log("4. Màn chơi mới không cao hơn mức hiện tại, không cần ghi đè.");
     }
 }

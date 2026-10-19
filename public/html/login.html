@@ -12,21 +12,23 @@
 <body>
     <section class="login-section">
     <div class="login-wrapper">
-        <form action="">
+        <form id="login-form">
             <h1>Đăng nhập</h1>
             <div class="input-box">
-                <input type="text" placeholder="Tên" required>
+                <input type="email" id="login-email" placeholder="Email" required>
                 <i class='bx bx-user'></i>
             </div>
             <div class="input-box">
-                <input type="password" placeholder="Mật khẩu" required>
+                <input type="password" id="login-password" placeholder="Mật khẩu" required>
                 <i class='bx bxs-lock' ></i>
             </div>
 
             <div class="remember-forgot">
                 <label><input type="checkbox">Ghi nhớ tôi</label>
-                <a href="#">Quên mật khẩu?</a>
+                <a href="forgot-password.html">Quên mật khẩu?</a>
             </div>
+
+            <p id="login-message" role="status" aria-live="polite"></p>
 
             <button type="submit" class="login-button">Đăng Nhập</button>
 
@@ -38,5 +40,6 @@
         </form>
     </div>
     </section>
+<script type="module" src="../js/login.js"></script>
 </body>
 </html>
