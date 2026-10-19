@@ -1,4 +1,4 @@
-import { supabase } from '../../src/supabaseClient.js';
+import { supabase } from '/src/supabaseClient.js';
 console.log("🚀 Đã chạy!");
 
 const registerForm = document.getElementById('register-form');
@@ -13,8 +13,8 @@ const submitButton = registerForm.querySelector(
     'button[type="submit"]'
 );
 
-// Keep the required symbols aligned with the character set supported by Supabase Auth.
-const SPECIAL_CHARACTERS = "!@#$%^&*()_+-=[]{};':\"\\|<>?,./`~";
+/ Keep the required symbols aligned with the character set supported by Supabase Auth.
+const SPECIAL_CHARACTERS = "!@#$%^&*()_+-=[]{};':\"\\|<>?,/`~";
 
 const strengthLabel = document.getElementById('password-strength-label');
 const strengthFill = document.getElementById('password-strength-fill');
@@ -116,7 +116,7 @@ registerForm.addEventListener('submit', async (event) => {
         return;
     }
 
-    // Validate all five requirements before sending the password to Supabase Auth.
+    / Validate all five requirements before sending the password to Supabase Auth.
     const passwordCheck = getPasswordCheck(password);
     if (!passwordCheck.isValid) {
         message.style.color = '#dc2626';
@@ -138,7 +138,7 @@ registerForm.addEventListener('submit', async (event) => {
     submitButton.textContent = 'Đang tạo tài khoản...';
 
     try {
-        // Supabase Auth remains responsible for account creation and server-side policy checks.
+        / Supabase Auth remains responsible for account creation and server-side policy checks.
         const { data, error } = await supabase.auth.signUp({
             email,
             password,
@@ -147,7 +147,7 @@ registerForm.addEventListener('submit', async (event) => {
                     full_name: name
                 },
                 emailRedirectTo: new URL(
-                    './login.html',
+                    '/login.html',
                     window.location.href
                 ).href
             }
@@ -162,7 +162,7 @@ registerForm.addEventListener('submit', async (event) => {
             message.textContent =
                 'Đăng ký thành công! Đang chuyển đến trang đăng nhập...';
 
-            window.location.replace('./login.html');
+            window.location.replace('/login.html');
         } else {
             message.style.color = 'green';
             message.textContent =
@@ -204,5 +204,5 @@ registerForm.addEventListener('submit', async (event) => {
     }
 });
 
-// Initialize the checklist and meter when the page opens.
+/ Initialize the checklist and meter when the page opens.
 updatePasswordStrength();

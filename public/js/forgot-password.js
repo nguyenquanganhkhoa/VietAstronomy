@@ -1,4 +1,4 @@
-import { supabase } from '../supabaseClient.js';
+import { supabase } from '/src/supabaseClient.js';
 console.log("🚀 Đã chạy trang Quên mật khẩu!");
 
 const forgotForm = document.getElementById('forgot-form');
@@ -25,11 +25,11 @@ forgotForm.addEventListener('submit', async (event) => {
     submitButton.textContent = 'Đang gửi yêu cầu...';
 
     try {
-        // [CÓ CHÚ THÍCH]: Sử dụng phương thức resetPasswordForEmail của Supabase Auth
-        // Hệ thống sẽ gửi một email chứa mã OTP hoặc link đặt lại mật khẩu về email của người dùng.
-        // redirectTo trỏ đến trang reset-password.html để người dùng tiến hành nhập mật khẩu mới.
+        / [CÓ CHÚ THÍCH]: Sử dụng phương thức resetPasswordForEmail của Supabase Auth
+        / Hệ thống sẽ gửi một email chứa mã OTP hoặc link đặt lại mật khẩu về email của người dùng.
+        / redirectTo trỏ đến trang reset-password.html để người dùng tiến hành nhập mật khẩu mới.
         const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
-            redirectTo: new URL('./reset-password.html', window.location.href).href,
+            redirectTo: new URL('/reset-password.html', window.location.href).href,
         });
 
         if (error) {

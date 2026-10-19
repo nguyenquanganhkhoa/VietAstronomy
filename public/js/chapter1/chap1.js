@@ -1,12 +1,12 @@
-// --- 1. THIẾT LẬP THƯ VIỆN THREE.JS ---
+/ --- 1. THIẾT LẬP THƯ VIỆN THREE.JS ---
 const canvas = document.getElementById('webgl-canvas');
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x020308); // Màu nền đêm thẫm
-scene.fog = new THREE.FogExp2(0x020308, 0.005); // Sương mù huyền ảo xa xa
+scene.background = new THREE.Color(0x020308); / Màu nền đêm thẫm
+scene.fog = new THREE.FogExp2(0x020308, 0.005); / Sương mù huyền ảo xa xa
 
 const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-// Đặt camera ở độ cao tầm mắt người đứng quan sát
+/ Đặt camera ở độ cao tầm mắt người đứng quan sát
 const EYE_HEIGHT = 5; 
 camera.position.set(0, EYE_HEIGHT, 0);
 
@@ -16,29 +16,29 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 
-// --- 3. ĐIỀU CHỈNH ORBITCONTROLS
+/ --- 3. ĐIỀU CHỈNH ORBITCONTROLS
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.05;
 
-// Tắt di chuyển vị trí để cố định người chơi tại 1 tọa độ
+/ Tắt di chuyển vị trí để cố định người chơi tại 1 tọa độ
 controls.enablePan = false;
 
-// Đặt điểm nhìn xa ban đầu
+/ Đặt điểm nhìn xa ban đầu
 controls.target.set(0, EYE_HEIGHT + 0.5, -10);
 
 controls.minPolarAngle = 0; 
 
 controls.maxPolarAngle = Math.PI / 1.7;
 
-// Giới hạn Zoom 
+/ Giới hạn Zoom 
 controls.enableZoom = true;
 
-// Giới hạn khoảng cách camera với điểm target để tạo cảm giác Zoom trong khoảng an toàn
-controls.minDistance = 2;  // Zoom tối đa vào gần
-controls.maxDistance = 15; // Zoom tối đa ra xa
+/ Giới hạn khoảng cách camera với điểm target để tạo cảm giác Zoom trong khoảng an toàn
+controls.minDistance = 2;  / Zoom tối đa vào gần
+controls.maxDistance = 15; / Zoom tối đa ra xa
 
-// --- 4. ÁNH SÁNG ---
+/ --- 4. ÁNH SÁNG ---
 const ambientLight = new THREE.AmbientLight(0x1a233a, 0.8);
 scene.add(ambientLight);
 
@@ -46,7 +46,7 @@ const starlight = new THREE.DirectionalLight(0x818cf8, 1.2);
 starlight.position.set(10, 50, 20);
 scene.add(starlight);
 
-// --- 5. TẠO MẶT ĐẤT LOW-POLY MÀU XANH ---
+/ --- 5. TẠO MẶT ĐẤT LOW-POLY MÀU XANH ---
 const groundGeo = new THREE.PlaneGeometry(200, 200, 40, 40);
 groundGeo.rotateX(-Math.PI / 2);
 
@@ -71,7 +71,7 @@ const groundMat = new THREE.MeshStandardMaterial({
 const ground = new THREE.Mesh(groundGeo, groundMat);
 scene.add(ground);
 
-// --- 6. TẠO DÃY NÚI LOW-POLY PHÍA XA (360 ĐỘ) ---
+/ --- 6. TẠO DÃY NÚI LOW-POLY PHÍA XA (360 ĐỘ) ---
 const mountainGeo = new THREE.CylinderGeometry(80, 100, 25, 32, 4, true);
 const mPos = mountainGeo.attributes.position;
 for (let i = 0; i < mPos.count; i++) {
@@ -91,7 +91,7 @@ const mountains = new THREE.Mesh(mountainGeo, mountainMat);
 mountains.position.y = 10;
 scene.add(mountains);
 
-// --- 7. TẠO CÁC CỤM CỎ LOW-POLY ---
+/ --- 7. TẠO CÁC CỤM CỎ LOW-POLY ---
 const bladeGeo = new THREE.ConeGeometry(0.12, 0.8, 3);
 bladeGeo.translate(0, 0.4, 0);
 
@@ -123,7 +123,7 @@ for (let i = 0; i < grassCount; i++) {
 }
 scene.add(grassMesh);
 
-// --- 8. TẠO BẦU TRỜI ĐẦY SAO & DẢI NGÂN HÀ ---
+/ --- 8. TẠO BẦU TRỜI ĐẦY SAO & DẢI NGÂN HÀ ---
 const starCount = 3000;
 const starGeo = new THREE.BufferGeometry();
 const starPos = new Float32Array(starCount * 3);
@@ -168,14 +168,14 @@ const starMat = new THREE.PointsMaterial({
 const starField = new THREE.Points(starGeo, starMat);
 scene.add(starField);
 
-// --- 9. RESIZE SỰ KIỆN CỬA SỔ ---
+/ --- 9. RESIZE SỰ KIỆN CỬA SỔ ---
 window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
-// --- 10. ANIMATION LOOP ---
+/ --- 10. ANIMATION LOOP ---
 function animate() {
     requestAnimationFrame(animate);
 
@@ -193,12 +193,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const hintCloseBtn = document.getElementById('hint-close-button');
   const hintOverlayBg = document.getElementById('hint-overlay-badge');
 
-  // Mở tờ giấy
+  / Mở tờ giấy
   hintToggleBtn.addEventListener('click', () => {
     hintModal.classList.remove('hidden');
   });
 
-  // Đóng tờ giấy
+  / Đóng tờ giấy
   const closeHint = () => {
     hintModal.classList.add('hidden');
   };

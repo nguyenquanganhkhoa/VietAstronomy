@@ -1,4 +1,4 @@
-// Dữ liệu sự kiện (Sau này chỉ cần thay mảng này bằng dữ liệu fetch từ NASA API)
+/ Dữ liệu sự kiện (Sau này chỉ cần thay mảng này bằng dữ liệu fetch từ NASA API)
 const eventsData = [
   {
     image: "image/Geminids.webp",
@@ -8,14 +8,14 @@ const eventsData = [
     link: "/html/news.html"
   },
   {
-    image: "https://placehold.co/300x300/1a1a2e/ffffff?text=NASA+Data",
+    image: "https:/placehold.co/300x300/1a1a2e/ffffff?text=NASA+Data",
     description: "Siêu Trăng",
     date: "07/04/2027",
     title: "Mưa Sao Băng & Siêu Trăng xuất hiện cùng thời điểm",
     link: "html/news.html"
   },
   {
-    image: "https://placehold.co/300x300/1a1a2e/ffffff?text=Asteroid",
+    image: "https:/placehold.co/300x300/1a1a2e/ffffff?text=Asteroid",
     description: "Tiểu hành tinh",
     date: "20/08/2026",
     title: "Tiểu hành tinh ghé thăm Trái Đất ở khoảng cách an toàn",
@@ -27,7 +27,7 @@ function renderEvents() {
   const container = document.getElementById("events-container");
   if (!container) return;
 
-  // Dùng .map() tạo chuỗi HTML đúng chuẩn cấu trúc bạn đã gõ
+  / Dùng .map() tạo chuỗi HTML đúng chuẩn cấu trúc bạn đã gõ
   container.innerHTML = eventsData.map(event => `
     <article class="event-card">
       <img src="${event.image}" alt="Ảnh sự kiện" class="event-image">

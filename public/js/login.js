@@ -1,4 +1,4 @@
-import { supabase } from '../../src/supabaseClient.js';
+import { supabase } from '/src/supabaseClient.js';
 
 const loginForm = document.getElementById('login-form');
 const emailInput = document.getElementById('login-email');
@@ -41,11 +41,11 @@ loginForm.addEventListener('submit', async (event) => {
         const params = new URLSearchParams(window.location.search);
         const redirect = params.get('redirect');
 
-        // Chỉ cho phép chuyển hướng đến đường dẫn nội bộ.
+        / Chỉ cho phép chuyển hướng đến đường dẫn nội bộ.
         const safeRedirect =
             redirect &&
             redirect.startsWith('/') &&
-            !redirect.startsWith('//') &&
+            !redirect.startsWith('/') &&
             !redirect.includes('\\')
                 ? redirect
                 : '/index.html';

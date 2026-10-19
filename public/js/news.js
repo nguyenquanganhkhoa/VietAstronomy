@@ -3,7 +3,7 @@ async function renderNews() {
   if (!container) return;
 
   try {
-    const response = await fetch("../data/news.json");
+    const response = await fetch("/data/news.json");
     if (!response.ok) throw new Error("Không tải được file news.json");
 
     const newsList = await response.json();

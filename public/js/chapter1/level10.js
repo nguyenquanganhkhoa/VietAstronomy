@@ -1,50 +1,50 @@
-// =========================================================================
-// 1. CẤU HÌNH THỜI GIAN CHUYỂN CẢNH & TỌA ĐỘ MẶT TRĂNG
-// =========================================================================
+/ =========================================================================
+/ 1. CẤU HÌNH THỜI GIAN CHUYỂN CẢNH & TỌA ĐỘ MẶT TRĂNG
+/ =========================================================================
 const MOON_CONFIG = {
-    size: 1.5,                  // Kích thước bán kính Mặt Trăng
-    startPos: new THREE.Vector3(0, -15, -70), // Vị trí khi chưa mọc
-    targetPos: new THREE.Vector3(15, 28, -100) // Vị trí khi mọc hoàn toàn
+    size: 1.5,                  / Kích thước bán kính Mặt Trăng
+    startPos: new THREE.Vector3(0, -15, -70), / Vị trí khi chưa mọc
+    targetPos: new THREE.Vector3(15, 28, -100) / Vị trí khi mọc hoàn toàn
 };
 
-// Thời gian chuyển cảnh (tính bằng giây)
+/ Thời gian chuyển cảnh (tính bằng giây)
 const MILKY_WAY_DURATION = 120.0; 
 const MOON_RISE_DURATION = 10.0;   
 
-// Khởi tạo đồng hồ thời gian riêng cho Level 10
+/ Khởi tạo đồng hồ thời gian riêng cho Level 10
 const levelClock = new THREE.Clock();
 
-// =========================================================================
-// 1.B. TẠO NHÂN VẬT LOW-POLY VÀ ẨN BAN ĐẦU
-// =========================================================================
+/ =========================================================================
+/ 1.B. TẠO NHÂN VẬT LOW-POLY VÀ ẨN BAN ĐẦU
+/ =========================================================================
 let playerCharacterGroup = null;
 
 function createLowPolyPlayer() {
     playerCharacterGroup = new THREE.Group();
 
-    // Chất liệu
+    / Chất liệu
     const skinMat  = new THREE.MeshStandardMaterial({ color: 0xffdbac, flatShading: true, roughness: 0.8 });
     const shirtMat = new THREE.MeshStandardMaterial({ color: 0x1e88e5, flatShading: true, roughness: 0.7 });
     const pantsMat = new THREE.MeshStandardMaterial({ color: 0x212121, flatShading: true, roughness: 0.8 });
     const hairMat  = new THREE.MeshStandardMaterial({ color: 0x5d4037, flatShading: true, roughness: 0.9 });
     const glassMat = new THREE.MeshStandardMaterial({ color: 0x111111, metalness: 0.8, roughness: 0.2 });
 
-    // 1. Thân người (Áo xanh dương)
+    / 1. Thân người (Áo xanh dương)
     const torso = new THREE.Mesh(new THREE.BoxGeometry(0.8, 1.2, 0.5), shirtMat);
     torso.position.y = 2.0;
     playerCharacterGroup.add(torso);
 
-    // 2. Đầu
+    / 2. Đầu
     const head = new THREE.Mesh(new THREE.BoxGeometry(0.6, 0.6, 0.6), skinMat);
     head.position.y = 2.9;
     playerCharacterGroup.add(head);
 
-    // 3. Tóc nâu
+    / 3. Tóc nâu
     const hair = new THREE.Mesh(new THREE.BoxGeometry(0.65, 0.25, 0.65), hairMat);
     hair.position.set(0, 3.25, 0);
     playerCharacterGroup.add(hair);
 
-    // 4. Kính râm
+    / 4. Kính râm
     const glasses = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.15, 0.1), glassMat);
     glasses.position.set(0, 2.95, 0.31);
     playerCharacterGroup.add(glasses);
@@ -56,7 +56,7 @@ function createLowPolyPlayer() {
     lensRight.position.x = 0.15;
     playerCharacterGroup.add(lensLeft, lensRight);
 
-    // 5. Tay
+    / 5. Tay
     const armGeo = new THREE.BoxGeometry(0.25, 1.0, 0.25);
     const leftArm = new THREE.Mesh(armGeo, shirtMat);
     leftArm.position.set(-0.55, 1.9, 0);
@@ -64,7 +64,7 @@ function createLowPolyPlayer() {
     rightArm.position.set(0.55, 1.9, 0);
     playerCharacterGroup.add(leftArm, rightArm);
 
-    // 6. Chân (Quần đen)
+    / 6. Chân (Quần đen)
     const legGeo = new THREE.BoxGeometry(0.3, 1.2, 0.3);
     const leftLeg = new THREE.Mesh(legGeo, pantsMat);
     leftLeg.position.set(-0.25, 0.8, 0);
@@ -72,9 +72,9 @@ function createLowPolyPlayer() {
     rightLeg.position.set(0.25, 0.8, 0);
     playerCharacterGroup.add(leftLeg, rightLeg);
 
-    // Đặt vị trí ban đầu phía trước camera gốc
+    / Đặt vị trí ban đầu phía trước camera gốc
     playerCharacterGroup.position.set(0, 0, -5);
-    playerCharacterGroup.visible = false; // Ban đầu ẩn đi
+    playerCharacterGroup.visible = false; / Ban đầu ẩn đi
 
     scene.add(playerCharacterGroup);
 }
@@ -87,9 +87,9 @@ function showPlayerCharacter() {
     }
 }
 
-// =========================================================================
-// 2. TẠO DẢI NGÂN HÀ & BẦU TRỜI / MẶT TRĂNG
-// =========================================================================
+/ =========================================================================
+/ 2. TẠO DẢI NGÂN HÀ & BẦU TRỜI / MẶT TRĂNG
+/ =========================================================================
 const milkyWayGroup = new THREE.Group();
 const coreCount = 10000; 
 const coreGeo = new THREE.BufferGeometry();
@@ -134,10 +134,10 @@ milkyWayGroup.rotation.z = Math.PI / 5;
 milkyWayGroup.rotation.x = Math.PI / 8;
 scene.add(milkyWayGroup);
 
-// SFX & Bầu trời
-const sfxCorrect = new Audio('../../music/clear-bell-chime.ogg');
-const sfxError = new Audio('../../music/error-notification.ogg');
-const sfxVictory = new Audio('../../music/victory-bell-success-fanfare.ogg');
+/ SFX & Bầu trời
+const sfxCorrect = new Audio('/music/clear-bell-chime.ogg');
+const sfxError = new Audio('/music/error-notification.ogg');
+const sfxVictory = new Audio('/music/victory-bell-success-fanfare.ogg');
 
 const colorDusk = new THREE.Color(0x4A0E17);   
 const colorNight = new THREE.Color(0x020308);  
@@ -145,7 +145,7 @@ const colorNight = new THREE.Color(0x020308);
 scene.background = colorDusk.clone();
 if (scene.fog) scene.fog.color = colorDusk.clone();
 
-// Mặt Trăng Low-Poly
+/ Mặt Trăng Low-Poly
 const moonGroup = new THREE.Group();
 const moonMesh = new THREE.Mesh(
     new THREE.IcosahedronGeometry(MOON_CONFIG.size, 2),
@@ -178,9 +178,9 @@ if (typeof starField !== 'undefined' && starField.material) {
     starField.material.opacity = 0.0;
 }
 
-// =========================================================================
-// 3. LOGIC CUTSCENE & TÊN LỬA
-// =========================================================================
+/ =========================================================================
+/ 3. LOGIC CUTSCENE & TÊN LỬA
+/ =========================================================================
 let isCutsceneActive = false;
 let cutsceneTimer = 0;
 let rocketMesh = null;
@@ -189,7 +189,7 @@ let initialCamPos = new THREE.Vector3();
 function createLowPolyRocket() {
     const rocketGroup = new THREE.Group();
 
-    // Thân tên lửa
+    / Thân tên lửa
     const body = new THREE.Mesh(
         new THREE.CylinderGeometry(0.3, 0.4, 2.5, 6),
         new THREE.MeshStandardMaterial({ color: 0xeeeeee, flatShading: true })
@@ -197,7 +197,7 @@ function createLowPolyRocket() {
     body.position.y = 1.25;
     rocketGroup.add(body);
 
-    // Đầu tên lửa
+    / Đầu tên lửa
     const nose = new THREE.Mesh(
         new THREE.ConeGeometry(0.35, 0.8, 6),
         new THREE.MeshStandardMaterial({ color: 0xe53935, flatShading: true })
@@ -205,7 +205,7 @@ function createLowPolyRocket() {
     nose.position.y = 2.9;
     rocketGroup.add(nose);
 
-    // Cánh tên lửa
+    / Cánh tên lửa
     const finGeo = new THREE.BoxGeometry(0.1, 0.6, 0.5);
     const finMat = new THREE.MeshStandardMaterial({ color: 0x1e88e5, flatShading: true });
     for (let i = 0; i < 4; i++) {
@@ -223,10 +223,10 @@ function triggerCutscene() {
     isCutsceneActive = true;
     cutsceneTimer = 0;
 
-    // Lưu lại vị trí camera chính diện hiện tại
+    / Lưu lại vị trí camera chính diện hiện tại
     initialCamPos.copy(camera.position);
 
-    // Tạo Tên Lửa bên cạnh nhân vật
+    / Tạo Tên Lửa bên cạnh nhân vật
     rocketMesh = createLowPolyRocket();
     const playerPos = playerCharacterGroup.position;
     rocketMesh.position.set(-150, 0, -90);
@@ -240,11 +240,11 @@ function updateCutscene(delta) {
     cutsceneTimer += delta;
     const playerPos = playerCharacterGroup.position;
 
-    // 1. CAMERA TỪ TỪ LÙI RA SAU LƯNG NHÂN VẬT (0s -> 3s)
+    / 1. CAMERA TỪ TỪ LÙI RA SAU LƯNG NHÂN VẬT (0s -> 3s)
     if (cutsceneTimer <= 3.0) {
         const progress = cutsceneTimer / 3.0;
 
-        // Điểm camera lùi ra sau lưng và đưa lên cao ngước nhìn trời
+        / Điểm camera lùi ra sau lưng và đưa lên cao ngước nhìn trời
         const targetCamPos = new THREE.Vector3(playerPos.x, playerPos.y + 3.0, playerPos.z + 15.0);
         camera.position.lerpVectors(initialCamPos, targetCamPos, progress);
 
@@ -254,22 +254,22 @@ function updateCutscene(delta) {
         }
     }
 
-    // 2. TÊN LỬA PHÓNG VÚT LÊN MẶT TRĂNG 
+    / 2. TÊN LỬA PHÓNG VÚT LÊN MẶT TRĂNG 
     if (cutsceneTimer >= 1.0 && rocketMesh) {
         const t = Math.min((cutsceneTimer - 1.0) / 10.0, 1.0);
 
         const startRocketPos = new THREE.Vector3(100, 0, -90);
         const moonPos = MOON_CONFIG.targetPos.clone();
 
-        // Di chuyển tên lửa đến Mặt Trăng
+        / Di chuyển tên lửa đến Mặt Trăng
         rocketMesh.position.lerpVectors(startRocketPos, moonPos, Math.pow(t, 2));
 
-        // Xoay đầu tên lửa hướng thẳng tới Mặt Trăng
+        / Xoay đầu tên lửa hướng thẳng tới Mặt Trăng
         rocketMesh.lookAt(moonPos);
         rocketMesh.rotateX(Math.PI / 2);
     }
 
-    // 3. HIỆN BẢNG CHIẾN THẮNG KHI KẾT THÚC
+    / 3. HIỆN BẢNG CHIẾN THẮNG KHI KẾT THÚC
     if (cutsceneTimer >= 15.0) {
         isCutsceneActive = false;
         const winOverlay = document.getElementById('win-overlay');
@@ -277,9 +277,9 @@ function updateCutscene(delta) {
     }
 }
 
-// =========================================================================
-// 4. XỬ LÝ SỰ KIỆN BẤM MẶT TRĂNG
-// =========================================================================
+/ =========================================================================
+/ 4. XỬ LÝ SỰ KIỆN BẤM MẶT TRĂNG
+/ =========================================================================
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 
@@ -308,10 +308,10 @@ function onPointerDownLevel10(event) {
         moonMesh.scale.set(1.3, 1.3, 1.3);
         setTimeout(() => moonMesh.scale.set(1, 1, 1), 300);
 
-        // Hiện nhân vật
+        / Hiện nhân vật
         showPlayerCharacter();
 
-        // Đặt camera ngay trước mặt nhân vật
+        / Đặt camera ngay trước mặt nhân vật
         const playerPos = playerCharacterGroup.position;
         camera.position.set(playerPos.x, playerPos.y + 2.2, playerPos.z + 3.5);
 
@@ -323,14 +323,14 @@ function onPointerDownLevel10(event) {
             controls.update();
         }
 
-        // Kích hoạt cutscene
+        / Kích hoạt cutscene
         triggerCutscene();
     }
 }
 
-// =========================================================================
-// 5. VÒNG LẶP ANIMATION MAIN
-// =========================================================================
+/ =========================================================================
+/ 5. VÒNG LẶP ANIMATION MAIN
+/ =========================================================================
 let milkyWayTimer = 0;
 let moonRiseTimer = 0;
 
@@ -338,7 +338,7 @@ function animateLevel10() {
     requestAnimationFrame(animateLevel10);
     const delta = levelClock.getDelta();
 
-    // Tiến trình Ngân Hà & Mặt Trăng mọc
+    / Tiến trình Ngân Hà & Mặt Trăng mọc
     if (milkyWayTimer < MILKY_WAY_DURATION) {
         milkyWayTimer += delta;
         const t1 = Math.min(milkyWayTimer / MILKY_WAY_DURATION, 1.0);
@@ -358,7 +358,7 @@ function animateLevel10() {
         moonHalo.scale.set(pulse, pulse, pulse);
     }
 
-    // Cập nhật Cutscene
+    / Cập nhật Cutscene
     updateCutscene(delta);
 
     if (typeof controls !== 'undefined') controls.update();
@@ -367,9 +367,9 @@ function animateLevel10() {
 
 animateLevel10();
 
-// =========================================================================
-// 6. GIAO DIỆN & ÂM THANH NỀN
-// =========================================================================
+/ =========================================================================
+/ 6. GIAO DIỆN & ÂM THANH NỀN
+/ =========================================================================
 let progress = 0;
 const fill = document.getElementById('progress-fill');
 const text = document.getElementById('loading-text');
@@ -395,7 +395,7 @@ if (startButton) {
     });
 }
 
-const levelBgMusic = new Audio('../../music/Dark-Times.mp3'); 
+const levelBgMusic = new Audio('/music/Dark-Times.mp3'); 
 levelBgMusic.loop = true;
 levelBgMusic.volume = 0.9;
 

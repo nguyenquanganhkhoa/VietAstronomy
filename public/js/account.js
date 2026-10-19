@@ -1,4 +1,4 @@
-import { supabase } from '../supabaseClient.js';
+import { supabase } from '/src/supabaseClient.js';
 
 document.addEventListener('DOMContentLoaded', async function() {
     // 1. Xử lý chuyển tab
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             
         } else {
             // Nếu chưa đăng nhập, có thể chuyển hướng về trang login nếu cần
-            // window.location.href = './login.html';
+            // window.location.href = '/login.html';
         }
     } catch (err) {
         console.error('Đã xảy ra lỗi:', err);
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
             try {
                 editAvatarBtn.textContent = '⏳'; // Hiển thị trạng thái đang tải
-                
+
                 const { data: { user } } = await supabase.auth.getUser();
                 if (!user) {
                     alert('Vui lòng đăng nhập lại để thực hiện tính năng này!');
