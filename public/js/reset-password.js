@@ -7,7 +7,7 @@ const confirmPasswordInput = document.getElementById('reset-confirm-password');
 const message = document.getElementById('reset-message');
 const submitButton = resetForm.querySelector('button[type="submit"]');
 
-/ Quy tắc kiểm tra độ mạnh mật khẩu giống hệt như trang đăng ký
+// Quy tắc kiểm tra độ mạnh mật khẩu giống hệt như trang đăng ký
 const SPECIAL_CHARACTERS = "!@#$%^&*()_+-=[]{};':\"\\|<>?,/`~";
 
 const strengthLabel = document.getElementById('password-strength-label');
@@ -31,7 +31,7 @@ const strengthLevels = [
     { label: 'Mạnh', color: '#16a34a', width: '100%' }
 ];
 
-/ [HÀM CHÚ THÍCH]: Kiểm tra chi tiết trạng thái của mật khẩu so với các quy tắc bảo mật
+// [HÀM CHÚ THÍCH]: Kiểm tra chi tiết trạng thái của mật khẩu so với các quy tắc bảo mật
 function getPasswordCheck(password) {
     const results = passwordRules.map((rule) => ({
         key: rule.key,
@@ -44,7 +44,7 @@ function getPasswordCheck(password) {
     };
 }
 
-/ [HÀM CHÚ THÍCH]: Cập nhật giao diện thanh đo độ mạnh mật khẩu theo thời gian thực (real-time input)
+// [HÀM CHÚ THÍCH]: Cập nhật giao diện thanh đo độ mạnh mật khẩu theo thời gian thực (real-time input)
 function updatePasswordStrength() {
     const password = passwordInput.value;
     const { results, score } = getPasswordCheck(password);
@@ -76,7 +76,7 @@ function updatePasswordStrength() {
 
 passwordInput.addEventListener('input', updatePasswordStrength);
 
-/ [HÀM CHÚ THÍCH]: Xử lý sự kiện submit form cập nhật mật khẩu mới thông qua Supabase
+// [HÀM CHÚ THÍCH]: Xử lý sự kiện submit form cập nhật mật khẩu mới thông qua Supabase
 resetForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
@@ -86,7 +86,7 @@ resetForm.addEventListener('submit', async (event) => {
     message.textContent = '';
     message.style.color = '';
 
-    / Kiểm tra độ mạnh mật khẩu trước khi gửi lên Supabase
+    // Kiểm tra độ mạnh mật khẩu trước khi gửi lên Supabase
     const passwordCheck = getPasswordCheck(password);
     if (!passwordCheck.isValid) {
         message.style.color = '#dc2626';
@@ -107,8 +107,8 @@ resetForm.addEventListener('submit', async (event) => {
     submitButton.textContent = 'Đang cập nhật...';
 
     try {
-        / [CÓ CHÚ THÍCH]: Dùng hàm updateUser của Supabase. Khi người dùng click link từ email,
-        / Supabase tự động xác thực phiên token tạm thời, cho phép thay đổi mật khẩu trực tiếp.
+        // [CÓ CHÚ THÍCH]: Dùng hàm updateUser của Supabase. Khi người dùng click link từ email,
+        // Supabase tự động xác thực phiên token tạm thời, cho phép thay đổi mật khẩu trực tiếp.
         const { data, error } = await supabase.auth.updateUser({
             password: password
         });
@@ -120,7 +120,7 @@ resetForm.addEventListener('submit', async (event) => {
         message.style.color = '#15e05f';
         message.textContent = 'Cập nhật mật khẩu thành công! Đang chuyển hướng về trang đăng nhập...';
 
-        / Đợi 2 giây rồi chuyển về trang đăng nhập để người dùng login lại với mật khẩu mới
+        // Đợi 2 giây rồi chuyển về trang đăng nhập để người dùng login lại với mật khẩu mới
         setTimeout(() => {
             window.location.replace('/login.html');
         }, 2000);

@@ -1,7 +1,7 @@
-/ Dữ liệu sự kiện (Sau này chỉ cần thay mảng này bằng dữ liệu fetch từ NASA API)
+// Dữ liệu sự kiện (Sau này chỉ cần thay mảng này bằng dữ liệu fetch từ NASA API)
 const eventsData = [
   {
-    image: "image/Geminids.webp",
+    image: "/image/Geminids.webp",
     description: "Mưa sao băng Geminids",
     date: "13-14/12/2026",
     title: "Vị vua của các cơn mưa sao băng sẽ trình làng vào cuối năm",
@@ -27,7 +27,7 @@ function renderEvents() {
   const container = document.getElementById("events-container");
   if (!container) return;
 
-  / Dùng .map() tạo chuỗi HTML đúng chuẩn cấu trúc bạn đã gõ
+  // Dùng .map() tạo chuỗi HTML đúng chuẩn cấu trúc bạn đã gõ
   container.innerHTML = eventsData.map(event => `
     <article class="event-card">
       <img src="${event.image}" alt="Ảnh sự kiện" class="event-image">

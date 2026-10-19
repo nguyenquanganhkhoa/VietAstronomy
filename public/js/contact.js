@@ -4,7 +4,7 @@ if (contactForm) {
   contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    / FormData tự động gom luôn cả input name="access_key" ở trên
+    // FormData tự động gom luôn cả input name="access_key" ở trên
     const formData = new FormData(contactForm);
     const object = Object.fromEntries(formData);
     const json = JSON.stringify(object);

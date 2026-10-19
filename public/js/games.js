@@ -1,9 +1,9 @@
-/ Màn chơi VietAstronomy
+// Màn chơi VietAstronomy
 /* Tổng hợp 10 màn chơi của Chapter 1: Tinh tú trên màn đêm vĩnh cửu.
 Màn 1: Săn tìm Thợ Săn
 "Tìm kiếm một thợ săn với chiếc đai trên bầu trời"
 */
-/ Màn chơi VietAstronomy
+// Màn chơi VietAstronomy
 async function renderGames() {
   const container = document.getElementById("games-list-container");
   if (!container) return;
@@ -14,10 +14,10 @@ async function renderGames() {
 
     const gamesList = await response.json();
 
-    / Mặc định màn 1 mở (nếu chưa đăng nhập)
+    // Mặc định màn 1 mở (nếu chưa đăng nhập)
     let unlockedLevel = 1;
 
-    / Kiểm tra thông tin đăng nhập và lấy progress từ Supabase
+    // Kiểm tra thông tin đăng nhập và lấy progress từ Supabase
     if (typeof supabase !== 'undefined') {
       const { data: { user } } = await supabase.auth.getUser();
       if (user) {
@@ -30,7 +30,7 @@ async function renderGames() {
         if (data) {
           unlockedLevel = data.unlocked_level || 1;
         } else {
-          / Nếu user mới đăng nhập lần đầu chưa có dòng progress, khởi tạo mặc định màn 1
+          // Nếu user mới đăng nhập lần đầu chưa có dòng progress, khởi tạo mặc định màn 1
           await supabase.from('user_progress').insert([{ user_id: user.id, unlocked_level: 1 }]);
         }
       }

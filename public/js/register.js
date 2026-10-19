@@ -13,7 +13,7 @@ const submitButton = registerForm.querySelector(
     'button[type="submit"]'
 );
 
-/ Keep the required symbols aligned with the character set supported by Supabase Auth.
+// Keep the required symbols aligned with the character set supported by Supabase Auth.
 const SPECIAL_CHARACTERS = "!@#$%^&*()_+-=[]{};':\"\\|<>?,/`~";
 
 const strengthLabel = document.getElementById('password-strength-label');
@@ -116,7 +116,7 @@ registerForm.addEventListener('submit', async (event) => {
         return;
     }
 
-    / Validate all five requirements before sending the password to Supabase Auth.
+    // Validate all five requirements before sending the password to Supabase Auth.
     const passwordCheck = getPasswordCheck(password);
     if (!passwordCheck.isValid) {
         message.style.color = '#dc2626';
@@ -138,7 +138,7 @@ registerForm.addEventListener('submit', async (event) => {
     submitButton.textContent = 'Đang tạo tài khoản...';
 
     try {
-        / Supabase Auth remains responsible for account creation and server-side policy checks.
+        // Supabase Auth remains responsible for account creation and server-side policy checks.
         const { data, error } = await supabase.auth.signUp({
             email,
             password,
@@ -204,5 +204,5 @@ registerForm.addEventListener('submit', async (event) => {
     }
 });
 
-/ Initialize the checklist and meter when the page opens.
+// Initialize the checklist and meter when the page opens.
 updatePasswordStrength();
