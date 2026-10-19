@@ -1,4 +1,4 @@
-import { supabase } from '../../src/supabaseClient.js';
+import { supabase } from '../supabaseClient.js';
 console.log("🚀 Đã chạy trang Quên mật khẩu!");
 
 const forgotForm = document.getElementById('forgot-form');

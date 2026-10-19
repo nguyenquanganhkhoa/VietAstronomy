@@ -1,4 +1,4 @@
-import { supabase } from '../../src/supabaseClient.js';
+import { supabase } from '../supabaseClient.js';
 
 document.addEventListener('DOMContentLoaded', async function() {
     // 1. Xử lý chuyển tab
