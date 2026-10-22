@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>VietAstronomy</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="/index.html" class="navbar-logo">
+                <img src="/image/logo.png" alt="Logo" class="logo-img">VietAstronomy
+            </a>
+            <button class="navbar-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <ul class="navbar-menu">
+                <li><a href="/index.html" class="active">Trang chủ</a></li>
+                <li><a href="/html/games.html"> Trò chơi</a></li>
+                <li><a href="/html/news.html"> Đội ngũ</a></li>
+                <li><a href="/html/contact.html"> Liên hệ</a></li>
+
+            <!-- Dành cho User đã đăng nhập -->
+            <li id="nav-item-account" class="hidden">
+            <a href="/html/account.html">Cosmoser</a>
+            </li>
+
+            <!-- Dành cho Khách (Guest) -->
+            <li id="nav-item-login">
+                <a href="/html/login.html">Đăng Nhập</a>
+            </li>
+
+            <!-- Nút Đăng xuất (Hiện khi đã đăng nhập) -->
+            <li id="nav-item-logout" class="hidden">
+                <a href="#">Đăng Xuất</a>
+            </li>
+            </ul>
+        </div>    
+    </nav>
+</body>
+</html>

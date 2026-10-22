@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="swiper-bundle.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>VietAstronomy</title>
+    <link rel="icon" type="image/png" href="image/logo.png">
+
+</head>
+<body>
+    <!--Navbar -->
+    <nav id="navbar-container"></nav>
+    <main>
+        <!-- KHU VỰC 1: Dành cho Khách (Chưa đăng nhập) -->
+        <section id="auth-section">
+            <h2>Chào mừng đến với VietAstronomy</h2>
+            <p>Vui lòng đăng nhập hoặc đăng ký để tiếp tục...</p>
+        <!-- Ở Giai đoạn 2 bạn sẽ đặt Form Đăng ký/Đăng nhập vào đây -->
+        </section>
+  
+  <!-- Các tính năng web, kính thiên văn 3D, game Nối sao... ở đây -->
+</section>
+        <!--Hero Section Trang Chủ-->
+        <section class="home-hero-container">
+            <img src="image/Hero-Section.webp" alt="homepage-logo" class="home-logo">
+            <div class="home-hero-text">
+                <h1>Trang web học thiên văn dành cho lứa tuổi học sinh</h1>
+                <p>Hỗ trợ người trẻ tiếp cận những kiến thức khô khan nhất qua những cách thú vị nhất!</p>
+                <a href="/html/games.html" class="home-button-hero require-auth">Thử ngay!</a>
+            </div>
+        </section>
+        <!--Sự kiện-->
+        <section class="events-section">
+            <h2>Sự kiện Thiên Văn Sắp Diễn Ra</h2>
+            <div class="events-container" id="events-container">
+            </div>
+        </section>
+        <!--Giới thiệu-->
+        <section class="home-team-section">
+        <div class="home-team-slide-container swiper">
+            <div class="home-team-content">
+                <div class="home-team-wrapper swiper-wrapper">
+                    <div class="home-team-card swiper-slide">
+                        <div class="home-team-image-content">
+                            <span class="home-team-overlay"></span>
+
+                            <div class="home-team-image">
+                                <img src="https://placehold.co/300x300/1a1a2e/ffffff?text=Lead+Dev" alt="Ảnh thành viên" class="home-team-img">
+                            </div>
+                        </div>
+
+                        <div class="home-team-content">
+                            <h2 class="home-team-name">Nguyễn Quang Anh Khoa</h2>
+                            <p class="home-team-description">Xin chào, tôi là Nguyễn Quang Anh Khoa, người sáng lập và phát triển VietAstronomy.</p>
+                            <a href="/html/about.html" class="home-team-button require-auth">Tìm hiểu thêm</a>
+                        </div>
+                    </div>          
+                </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+        </section>
+    </main>
+    <section id="footer-container"></section>
+<script src="/js/swiper-bundle.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/index.js"></script>
+<script type="module" src="/js/auth.js"></script>
+</body>
+</html>

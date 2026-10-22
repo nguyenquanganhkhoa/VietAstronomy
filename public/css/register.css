@@ -1,0 +1,187 @@
+.register-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.register-wrapper{
+    width: 420px;
+    color: bisque;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 30px 40px;
+}
+
+.register-wrapper h1 {
+    font-size: 36px;
+    text-align: center;
+}
+
+.register-wrapper .input-box {
+    position: relative;
+    width: 100%;
+    height: 50%;
+    margin: 30px 0;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 20px 45px 20px 20px;
+}
+
+.input-box input::placeholder {
+    color: #fff;
+}
+
+.input-box i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+
+.register-wrapper .remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14.5px;
+    margin: -15px 0 15px;
+}
+
+.remember-forgot label input {
+    accent-color: #fff;
+    margin-right: 3px;
+}
+
+.register-wrapper .register-button {
+    width: 100%;
+    height: 45px;
+    background: #000;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(255, 255, 255);
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.register-wrapper .login-link {
+    font-size: 14.5px;
+    text-align: center;
+    margin: 20px 0 15px;
+}
+
+.login-link p a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-link p a:hover {
+    text-decoration: underline;
+}
+
+.password-strength {
+    margin: 8px 0 16px;
+    padding: 0 2px;
+    font-family: inherit;
+}
+
+.password-strength__heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 7px;
+    font-size: 13px;
+}
+
+.password-strength__heading span:first-child {
+    color: #f4e1e1;
+}
+
+#password-strength-label {
+    font-weight: 700;
+    color: #f8e8e8;
+    text-align: right;
+}
+
+.password-strength__track {
+    width: 100%;
+    height: 7px;
+    overflow: hidden;
+    background: #e5e7eb;
+    border-radius: 999px;
+}
+
+#password-strength-fill {
+    width: 0;
+    height: 100%;
+    background: #94a3b8;
+    border-radius: inherit;
+    transition: width 180ms ease, background-color 180ms ease;
+}
+
+.password-strength__rules {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+    margin: 11px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.password-strength__rule {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #c6d9f6;
+    font-size: 12px;
+    line-height: 1.4;
+    transition: color 150ms ease;
+}
+
+.password-strength__rule-icon {
+    display: inline-flex;
+    flex: 0 0 16px;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 50%;
+    color: #94a3b8;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.password-strength__rule.is-met {
+    color: #37ff84;
+}
+
+.password-strength__rule.is-met .password-strength__rule-icon {
+    border-color: #16a34a;
+    background: #dcfce7;
+    color: #28ea72;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #password-strength-fill,
+    .password-strength__rule {
+        transition: none;
+    }
+}

@@ -1,0 +1,225 @@
+.account-container{
+    max-width: 1000px;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card, .tab-pane {
+    background: rgba(10, 10, 25, 0.7);;
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    border: 1px solid rgba(100, 22, 218, 0.2);
+    padding: 30px;
+    box-shadow: 0 0 20px rgba(100, 22, 218, 0.1);
+    transition: all 0.3s ease;
+}
+
+.card:hover, .tab-pane:hover {
+    border-color: rgba(100, 22, 218, 0.5);
+    box-shadow: 0 0 30px rgba( 100, 22, 218, 0.2);
+}
+
+.account-header{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.avatar-wrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+.avatar-img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #64ffda;
+    box-shadow: 0 0 15px rgba(100, 255, 218, 0.5);
+}
+
+.button-edit-avatar {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #64ffda;
+    color: #0a0a19;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+    transition: transform 0.2s ease;
+}
+
+.btn-edit-avatar:hover {
+  transform: scale(1.1);
+}
+
+.user-info{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.user-name {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.user-badge{
+    font-size: 1rem;
+    color: #64ffda;
+    background: rgba(100, 255, 218, 0.1);
+    padding: 5px 15px;
+    border-radius: 20px;
+    border: 1px solid rgba(100, 255, 218, 0.3);
+    width: fit-content;
+}
+
+.account-tabs{
+    display: flex;
+    gap: 10px;
+    background: rgba(10, 10, 25, 0.5);
+    padding: 10px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.tab-button {
+    background: transparent;
+    color: #8892b0;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.tab-button:hover {
+    color: #fff;
+    background: rgba(100, 255, 218, 0.5);
+}
+
+.tab-button.active {
+    background: #64ffda;
+    color: #0a0a19;
+    box-shadow: 0 0 15px rgba(100, 255, 218, 0.5);
+}
+
+.tab-content{
+    position: relative;
+}
+
+.tab-pane {
+    animation: fadeInSpace 0.5s ease;
+}
+
+@keyframes fadeInSpace {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tab-pane h3 {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid rgba(100, 255, 218, 0.3);
+    padding-bottom: 10px;
+    width: fit-content;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(100, 255, 218, 0.3);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #64ffda;
+    box-shadow: 0 0 10px rgba(100, 22, 218, 0.3)
+}
+
+input[type="bio"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(100, 255, 218, 0.3);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input[type="bio"]:focus {
+    outline: none;
+    border-color: #64ffda;
+    box-shadow: 0 0 10px rgba(100, 22, 218, 0.3)
+}
+
+
+.button-save {
+    background: #64ffda;
+    color: #0a0a19;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+}
+
+.button-save:hover {
+    background: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.5);
+}
+
+@media (max-width: 768px) {
+    .account-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .account-tabs {
+        flex-wrap: wrap;
+        justify-content: center;
+        border-radius: 16px;
+    }
+}

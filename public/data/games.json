@@ -1,0 +1,72 @@
+[
+  { 
+    "id": 1, 
+    "title": "Săn tìm Thợ Săn", 
+    "banner": "../image/level1.webp", 
+    "desc": "Tìm kiếm một thợ săn với chiếc đai trên bầu trời!", 
+    "link": "../html/games/level1.html" 
+  },
+  { 
+    "id": 2, 
+    "title": "Con trâu già cỗi", 
+    "banner": "../image/level2.webp", 
+    "desc": "Cuộc chiến này thật điên rồ!!!", 
+    "link": "../html/games/level2.html" 
+  },
+  { 
+    "id": 3, 
+    "title": "Thú cưng của Thợ Săn", 
+    "banner": "../image/level3.webp", 
+    "desc": "Trợ lí đắc lực của Orion, người đồng đội trung thành và đáng tin cậy!", 
+    "link": "../html/games/level3.html" 
+  },
+  { 
+    "id": 4, 
+    "title": "Chúa tể muôn loài", 
+    "banner": "../image/level4.webp", 
+    "desc": "Hình dáng của nó thật oai phong, lẫm liệt!", 
+    "link": "../html/games/level4.html" 
+  },
+  { 
+    "id": 5, 
+    "title": "Đại Hùng Vương", 
+    "banner": "../image/level5.webp", 
+    "desc": "Ha you're a wrestler", 
+    "link": "../html/games/level5.html" 
+  },
+  { 
+    "id": 6, 
+    "title": "Tiểu Hùng Phương Bắc", 
+    "banner": "../image/level6.webp", 
+    "desc": "Con gấu với cái đuôi phương Bắc của nó!", 
+    "link": "../html/games/level6.html" 
+  },
+  { 
+    "id": 7, 
+    "title": "Con Bọ Cạp", 
+    "banner": "../image/level7.webp", 
+    "desc": "Trái tim Rực Lửa và cái đuôi chết người!", 
+    "link": "../html/games/level7.html" 
+  },
+  { 
+    "id": 8, 
+    "title": "Cuộc diễu hành của các hành tinh", 
+    "banner": "../image/level8.webp", 
+    "desc": "Tại sao nó lại có thể hoàn hảo như vậy?", 
+    "link": "../html/games/level8.html" 
+  },
+  { 
+    "id": 9, 
+    "title": "Đường đến phía Nam", 
+    "banner": "../image/level9.webp", 
+    "desc": "Tạm biệt bầu trời phương Bắc quen thuộc, ta rong ruổi trên những chiếc thuyền đến Phương Nam!", 
+    "link": "../html/games/level9.html" 
+  },
+  { 
+    "id": 10, 
+    "title": "Dòng sữa Tạo Hóa", 
+    "banner": "../image/level10.webp", 
+    "desc": "Vẻ đẹp thuần túy của bầu trời đêm! Chiêm ngưỡng nó nào!", 
+    "link": "../html/games/level10.html" 
+  }
+]
