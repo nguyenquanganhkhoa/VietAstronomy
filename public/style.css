@@ -430,46 +430,85 @@ body {
     }
 }
 /*Đội ngũ(Trang Chủ)*/
-.home-team-card{
-    border-radius: 25px;
-    background-color: #fff;
+.home-team-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-width: 0;
+    padding: 40px 20px;
+    box-sizing: border-box;
 }
 
-.home-team-slide-container {
+/* Container chính của Swiper */
+.home-team-slide-container.swiper {
     max-width: 1120px;
     width: 100%;
-    padding: 40px 0;
+    min-width: 0;
+    margin: 0 auto;
+    padding: 40px 0 60px;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
 }
+
+/* FIX QUAN TRỌNG: Sắp xếp slide theo chiều ngang */
+.home-team-wrapper.swiper-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    position: relative;
+    width: 100%;
+    height: auto;
+    box-sizing: content-box;
+}
+
+/* Từng thẻ thành viên */
+.home-team-card.swiper-slide {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    height: auto;
+    min-width: 0;
+    border-radius: 25px;
+    background-color: #fff;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* Nội dung hình ảnh và thông tin */
 .home-team-image-content,
-.home-team-content{
+.home-team-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 10px 14px;
 }
 
-.home-team-slide-content{
+.home-team-slide-content {
     margin: 0 40px;
 }
 
-.home-team-image-content{
+.home-team-image-content {
     position: relative;
     row-gap: 5px;
     padding: 25px 0;
 }
 
-.home-team-overlay{
+/* Phần nền phía sau ảnh thành viên */
+.home-team-overlay {
     position: absolute;
     left: 0;
     top: 0;
     height: 100%;
     width: 100%;
-    background-color:#000000;
+    background-color: #000000;
     border-radius: 25px 25px 0 25px;
 }
 
 .home-team-overlay::before,
-.home-team-overlay::after{
+.home-team-overlay::after {
     content: '';
     position: absolute;
     right: 0;
@@ -478,6 +517,7 @@ body {
     width: 40px;
 }
 
+/* Ảnh đại diện */
 .home-team-image {
     position: relative;
     height: 150px;
@@ -485,31 +525,34 @@ body {
     border-radius: 50%;
     background: #000000;
     padding: 3px;
+    box-sizing: border-box;
 }
 
-.home-team-image .home-team-img{
+.home-team-image .home-team-img {
+    display: block;
     height: 100%;
     width: 100%;
     object-fit: cover;
     border-radius: 50%;
     border: 4px solid #357658;
+    box-sizing: border-box;
 }
-.home-team-section {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.home-team-name{
+
+/* Thông tin thành viên */
+.home-team-name {
     font-size: 18px;
     font-weight: 500;
     color: #000000;
+    text-align: center;
 }
-.home-team-description{
+
+.home-team-description {
     font-size: 14px;
     color: #000000;
     text-align: center;
 }
-.home-team-button{
+
+.home-team-button {
     text-decoration: none;
     border: none;
     font-size: 16px;
@@ -521,7 +564,45 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
 }
-.home-team-button:hover{
-    background-color:#00ff87;
+
+.home-team-button:hover {
+    background-color: #00ff87;
+}
+
+/* Nút điều hướng Swiper */
+.home-team-slide-container .swiper-button-next,
+.home-team-slide-container .swiper-button-prev {
+    color: #00ff87;
+}
+
+/* Chấm phân trang */
+.home-team-slide-container .swiper-pagination-bullet {
+    background-color: #ffffff;
+    opacity: 0.5;
+}
+
+.home-team-slide-container .swiper-pagination-bullet-active {
+    background-color: #00ff87;
+    opacity: 1;
+}
+
+/* Responsive cho điện thoại */
+@media (max-width: 768px) {
+    .home-team-section {
+        padding: 20px 10px;
+    }
+
+    .home-team-slide-container.swiper {
+        padding: 25px 0 50px;
+    }
+
+    .home-team-slide-content {
+        margin: 0 10px;
+    }
+
+    .home-team-slide-container .swiper-button-next,
+    .home-team-slide-container .swiper-button-prev {
+        display: none;
+    }
 }
 /*THE END*/

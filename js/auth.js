@@ -1,4 +1,4 @@
-import { supabase } from '/src/supabaseClient.js';
+import { supabase } from '../src/supabaseClient.js';
 
 // 1. Hàm kiểm tra người dùng đã từng đăng nhập hay chưa khi mới mở web
 async function checkInitialAuth() {

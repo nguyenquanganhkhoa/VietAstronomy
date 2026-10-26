@@ -4,6 +4,7 @@ Màn 1: Săn tìm Thợ Săn
 "Tìm kiếm một thợ săn với chiếc đai trên bầu trời"
 */
 // Màn chơi VietAstronomy
+import { supabase } from '../src/supabaseClient.js';
 async function renderGames() {
   const container = document.getElementById("games-list-container");
   if (!container) return;
@@ -13,6 +14,7 @@ async function renderGames() {
     if (!response.ok) throw new Error("Không tải được file games.json");
 
     const gamesList = await response.json();
+    console.log("✅ Đã tải JSON:", gamesList.length);
 
     // Mặc định màn 1 mở (nếu chưa đăng nhập)
     let unlockedLevel = 1;
@@ -37,6 +39,7 @@ async function renderGames() {
     }
 
     const cardsHTML = gamesList.map(level => {
+      console.log("✅ Đã đi đến bước render game");
       const isLocked = level.id > unlockedLevel;
 
       return `
@@ -62,7 +65,14 @@ async function renderGames() {
   } catch (error) {
     console.error("Lỗi tải trò chơi:", error);
     container.innerHTML = "<p>Không thể tải danh sách màn chơi!</p>";
+        console.log(
+          "✅ Đã render:", 
+          container.querySelectorAll('.game-card').length);
   }
 }
 
-document.addEventListener("DOMContentLoaded", renderGames);
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", renderGames);
+} else {
+    renderGames();
+}

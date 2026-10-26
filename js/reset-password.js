@@ -1,4 +1,4 @@
-import { supabase } from '/src/supabaseClient.js';
+import { supabase } from '../src/supabaseClient.js';
 console.log("🚀 Đã chạy trang Đặt lại mật khẩu!");
 
 const resetForm = document.getElementById('reset-form');

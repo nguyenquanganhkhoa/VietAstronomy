@@ -49,15 +49,19 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   });
 
-var swiper = new Swiper('.home-team-content', {
+if (
+    typeof Swiper !== "undefined" &&
+    document.querySelector(".home-team-slide-container")
+) {
+    const swiper = new Swiper(".home-team-slide-container", {
         slidesPerView: 1,
         spaceBetween: 25,
-        loop: true,
+        loop: false,
         centerSlide: true,
         fade: 'true',
         gragCursor: 'true',
         navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-});
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+        },});
+}
