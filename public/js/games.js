@@ -16,7 +16,7 @@ async function renderGames() {
     const cardsHTML = gamesList.map(level => `
       <div class="game-card">
         <div class="game-banner">
-          <img src="${level.banner}" alt="Banner ${level.title}">
+          <img src="${level.banner}" alt="Banner ${level.title}" width="600" height="450" loading="lazy" decoding="async">
         </div>
         <div class="game-info">
           <h3>Màn ${level.id}: ${level.title}</h3>

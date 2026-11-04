@@ -30,7 +30,7 @@ function renderEvents() {
   // Dùng .map() tạo chuỗi HTML đúng chuẩn cấu trúc bạn đã gõ
   container.innerHTML = eventsData.map(event => `
     <article class="event-card">
-      <img src="${event.image}" alt="Ảnh sự kiện" class="event-image">
+      <img src="${event.image}" alt="Ảnh sự kiện" class="event-image" width="300" height="300" loading="lazy" decoding="async">
       <div class="event-info">
         <span class="card-description">${event.description}</span>
         <p class="event-date">${event.date}</p>

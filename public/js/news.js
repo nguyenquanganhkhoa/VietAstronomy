@@ -11,7 +11,7 @@ async function renderNews() {
     const cardsHTML = newsList.map(article => `
       <article class="news-card">
         <div class="news-banner">
-          <img src="${article.banner}" alt="${article.title}">
+          <img src="${article.banner}" alt="${article.title}" width="600" height="400" loading="lazy" decoding="async">
         </div>
         <div class="news-info">
           <span class="news-badge">${article.badge}</span>
